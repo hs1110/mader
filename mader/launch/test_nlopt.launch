@@ -1,0 +1,7 @@
+<!--
+test launch file
+--> 
+
+<launch>  
+  <node name="test_nlopt_node" pkg="mader" type="test_nlopt" output="screen"/>
+</launch>
