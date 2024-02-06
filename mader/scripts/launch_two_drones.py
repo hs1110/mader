@@ -25,7 +25,7 @@ def create_session(session_name, commands):
 
     for i in range(len(commands)):
         print('splitting ',i)
-        os.system('tmux split-window ; tmux select-layout tiled')
+        os.system('tmux split-window ; tmux select-layout even-horizontal')
    
     for i in range(len(commands)):
         os.system('tmux send-keys -t '+str(session_name)+':0.'+str(i) +' "'+ commands[i]+'" '+' C-m')
@@ -44,10 +44,10 @@ def convertToStringCommand(action,quad,x,y,z,goal_x,goal_y,goal_z, yaw):
 
 if __name__ == '__main__':
     # formation="sphere", "square" "circle"
-    formation="sphere"
+    formation="circle"
     commands = []
     num_of_agents=2; 
-    radius=10;
+    radius=5;
 
 
     if(formation=="sphere"):
@@ -106,8 +106,8 @@ if __name__ == '__main__':
             roll=0.0;
             yaw= theta#+math.pi  
 
-            goal_x=radius*math.cos(theta+2*math.pi)*math.sin(phi+math.pi)
-            goal_y=radius*math.sin(theta+2*math.pi)*math.sin(phi+math.pi)
+            goal_x=radius*math.cos(theta+2*math.pi)*math.sin(phi+math.pi) +5.0
+            goal_y=radius*math.sin(theta+2*math.pi)*math.sin(phi+math.pi) +5.0
             goal_z=shift_z + radius*math.cos(phi+math.pi)
                 
             quad="SQ0" + str(id_number) + "s";
